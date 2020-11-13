@@ -12,14 +12,19 @@ export class HeroesComponent implements OnInit {
 
 
 heroes: HeroeModel[] = [];
+cargar = false;
+
 
   constructor(private hereosService: HeroesService) { }
 
   ngOnInit(): void {
 
+    this.cargar= true;
+
   this.hereosService.getHeroes().subscribe(resp =>{
     console.log(resp);
     this.heroes = resp;
+    this.cargar=false;
   });
 
   }
