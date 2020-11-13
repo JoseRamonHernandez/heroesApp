@@ -39,5 +39,31 @@ private url='https://logina-app.firebaseio.com';
 
 
   }
+
+getHeroes(){
+  return this.http.get(`${this.url}/heroes.json`)
+              .pipe(
+                map(resp => this.crearArreglo(resp) )
+              );
+}
+
+private crearArreglo(heroesObj: object ){
+  
+  const heroes: HeroeModel[] = [];
+
+ // console.log(heroesObj);
+
+  if(heroesObj === null){return [];}
+
+  Object.keys(heroesObj).forEach(key =>{
+    const heroe: HeroeModel = heroesObj[key];
+    heroe.id = key;
+
+    heroes.push(heroe);
+  });
+
+  return heroes;
+}
+
 }
  
