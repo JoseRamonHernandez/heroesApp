@@ -40,6 +40,11 @@ private url='https://logina-app.firebaseio.com';
 
   }
 
+getHeroe(id: string){
+  return this.http.get(`${this.url}/heroes/${id}.json`);
+}
+
+
 getHeroes(){
   return this.http.get(`${this.url}/heroes.json`)
               .pipe(
